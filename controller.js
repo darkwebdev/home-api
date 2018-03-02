@@ -5,6 +5,8 @@ const fs = require('fs');
 module.exports = {
   list(req, res) {
     console.log('[ctrl] list not implemented');
+
+    res.status(501).json();
   },
 
   create(req, res) {
@@ -26,11 +28,17 @@ module.exports = {
 
     const data = readSensor(req.params.id);
 
-    res.json(data);
+    if (!data) {
+      console.log(`Warning: data for sensor ${req.params.id} not found.`);
+    }
+
+    res.status(data ? 200 : 204).json(data);
   },
 
   delete(req, res) {
     console.log('[ctrl] delete not implemented');
+
+    res.status(501).json();
   }
 };
 
@@ -40,9 +48,7 @@ function readSensor(id) {
   try {
     return require(dataFile);
   } catch(err) {
-    console.log(`Warning: Requested sensors data file ${dataFile} not found.`);
-
-    return {};
+    return undefined;
   }
 }
 
