@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Timur Manyanov <gtibalt@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "express": "^4.16.2"
   }
