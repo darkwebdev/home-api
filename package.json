@@ -6,6 +6,7 @@
   "author": "Timur Manyanov <gtibalt@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "pre-start": "mkdir -p sensors",
     "start": "node index"
   },
   "dependencies": {
