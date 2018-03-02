@@ -1,0 +1,11 @@
+{
+  "name": "home-api",
+  "version": "1.0.0",
+  "description": "Smarthome API for saving data from sensors",
+  "main": "index.js",
+  "author": "Timur Manyanov <gtibalt@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

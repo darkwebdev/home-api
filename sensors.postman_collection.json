@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Sensors",
+		"_postman_id": "713e0da7-5e9b-0d1a-8dd3-46f26e1f17eb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get temp",
+			"request": {
+				"url": "http://localhost:8080/sensors/temp",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post temp",
+			"request": {
+				"url": "http://localhost:8080/sensors/temp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"value\": 20\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
