@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const { readSensor, writeSensor } = require('./sensors');
 
 module.exports = {
   list(req, res) {
@@ -41,27 +41,3 @@ module.exports = {
     res.status(501).json();
   }
 };
-
-function readSensor(id) {
-  const dataFile = `./sensors/${id}.json`;
-
-  try {
-    return require(dataFile);
-  } catch(err) {
-    return undefined;
-  }
-}
-
-function writeSensor(id, valueObject) {
-  const dataFile = `./sensors/${id}.json`;
-
-  return new Promise((resovle, reject) => {
-    fs.writeFile(dataFile, JSON.stringify(valueObject), (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resovle();
-      }
-    });
-  });
-}
