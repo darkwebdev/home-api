@@ -26,13 +26,15 @@ module.exports = {
   read(req, res) {
     console.log(`[ctrl] read sensor ${req.params.id}`);
 
-    const data = readSensor(req.params.id);
-
-    if (!data) {
-      console.log(`Warning: data for sensor ${req.params.id} not found.`);
-    }
-
-    res.status(data ? 200 : 204).json(data);
+    readSensor(req.params.id)
+      .then((data) => {
+        res.status(200).json(data);
+        console.log(`[ctrl] ${data.value}`)
+      })
+      .catch((err) => {
+        console.log(`Warning: data for sensor ${req.params.id} not found.`);
+        res.status(204).json({});
+      });
   },
 
   delete(req, res) {

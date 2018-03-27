@@ -22,17 +22,19 @@ module.exports = ({ serialPort, baudRate }) => {
   serial.on('data', (chunk) => {
     buffer += chunk.toString();
 
-    console.log('Buffer:', buffer);
+    console.log('[serial] update buffer:', buffer);
 
     const parsed = parse(buffer);
 
     if (parsed) {
       const [ str, temp, hum ] = parsed;
 
-      console.log(`Serial sensor data parsed: temp=${temp}, hum=${hum}`);
-
-      writeSensor('temp', { value: temp });
-      writeSensor('hum', { value: hum });
+      writeSensor('temp', { value: temp }).then(() => {
+        console.log(`Data for temp is written.`);
+      });
+      writeSensor('hum', { value: hum }).then(() => {
+        console.log(`Data for hum is written.`);
+      });
 
       buffer = '';
     }
