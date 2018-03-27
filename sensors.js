@@ -6,6 +6,9 @@ module.exports = {
   readSensor(id) {
     const dataFile = `./sensors/${id}.json`;
 
+    //invalidate cache
+    delete require.cache[dataFile];
+
     try {
       return require(dataFile);
     } catch (err) {
